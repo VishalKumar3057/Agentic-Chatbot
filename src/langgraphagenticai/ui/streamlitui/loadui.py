@@ -45,7 +45,7 @@ class LoadStreamlitUI:
 
                 # Validate API key
                 if not self.user_controls["OPENAI_API_KEY"]:
-                    st.warning("⚠️ Please enter your OpenAI API key to proceed. Don't have one? Get it here: https://platform.openai.com/api-keys")
+                    st.warning("⚠️ Please enter your OpenAI API key to proceed. Don't have? referCQX: https://platform.openai.com/api-keys")
             
             ## USecase selection
             self.user_controls["selected_usecase"]=st.selectbox("Select Usecases",usecase_options)
