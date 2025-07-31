@@ -25,10 +25,19 @@ def load_langgraph_agenticai_app():
 
     if user_message:
         try:
-            ## Configure The LLM's
-            obj_llm_config=GroqLLM(user_contols_input=user_input)
-            # Get the LLM modelS
-            model=obj_llm_config.get_llm_model()
+            # Check which LLM user selected
+            selected_llm = user_input.get("selected_llm")
+
+            if selected_llm == "Groq":
+                obj_llm_config = GroqLLM(user_contols_input=user_input)
+            elif selected_llm == "OpenAI":
+                obj_llm_config = OpenAILLM(user_controls_input=user_input)
+            else:
+                st.error(f"Error: Unsupported LLM provider '{selected_llm}' selected.")
+                return
+
+            # Get the model
+            model = obj_llm_config.get_llm_model()
 
             if not model:
                 st.error("Error: LLM model could not be initialized")
